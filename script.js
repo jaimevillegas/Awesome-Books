@@ -5,16 +5,15 @@ const bookAuthor = document.getElementById('book-author');
 const addBook = document.getElementById('add-book');
 
 const books = [
-    {
-        name: 'Book title 1',
-        author: 'Book author 1',
-        id: 0,
-    },
-    {
-        name: 'Book title 2',
-        author: 'Book author 2',
-        id: 1,
-    },
+    // { name: 'Book title 1',
+    //     author: 'Book author 1',
+    //     id: 0,
+    // },
+    // {
+    //     name: 'Book title 2',
+    //     author: 'Book author 2',
+    //     id: 1,
+    // },
 ];
 
 function createBook(name, author, id) {
@@ -22,11 +21,32 @@ function createBook(name, author, id) {
     workHTML.innerHTML = `
         <p>${name}</p>
         <p>${author}</p>
-        <button id='button-${id}' onclick='getRemoveBook(${id})' class='remove-book'>Remove ${id}</button>
+        <button id='button-${id}' onclick='getRemoveBook(${id})' class='remove-book'>Remove</button>
         <hr>
     `;
     SectionBook.appendChild(workHTML);
 }
+
+function bookObject(name, author, id) {
+    this.name = name;
+    this. author = author;
+    this.id = id;
+}
+
+function addNewBook(n, a, i) {
+    var bookObj = new bookObject(n, a, i);
+    books.push(bookObj);
+    SectionBook.innerHTML = '';
+    books.forEach((book) => {
+        createBook(book.name, book.author, book.id);
+    });
+}
+
+addBook.addEventListener('click', (e) => {
+    e.preventDefault();
+    var idNumber = books.length + 1;
+    addNewBook(bookTitle.value, bookAuthor.value, idNumber)
+})
 
 window.addEventListener('load', (() => {
     SectionBook.innerHTML = '';
@@ -39,7 +59,7 @@ function getRemoveBook(id) {
   let newBooks = books.forEach((book) => {
     if (book.id === id) {
       console.log(book.id);
-      delete books[id];
+      delete books[id - 1];
       console.log(books);
       SectionBook.innerHTML = '';
       books.forEach((book) => {

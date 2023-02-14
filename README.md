@@ -72,6 +72,12 @@ Clone this repository to your desired folder:
 - LinkedIn: [Villegas0296](https://www.linkedin.com/in/villegas0296/)
 - Medium: [@jaimevillegas296](https://medium.com/@jaimevillegas296)
 
+👤 **Getayawkal Tamrat**
+
+- GitHub: [@githubhandle](https://github.com/getssh)
+- Twitter: [@twitterhandle](https://twitter.com/GetayawkalT)
+- LinkedIn: [LinkedIn](https://www.linkedin.com/in/getayawkal-tamrat/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## 🔭 Future Features <a name="future-features"></a>

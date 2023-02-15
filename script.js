@@ -30,16 +30,11 @@ class Book {
   }
 
   showDate() {
+    const date = new Date();
+    const options = { month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true };
+    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date).replace(/,/g, '');
 
-    // REVIEW THIS!!!!
-
-    // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    // var today  = new Date();
-    // textDate.innerHTML(today.toLocaleDateString("en-US", options));
-    var today = new Date().toLocaleDateString('en-us', { year:"numeric", month:"short"})
-    // let completeDate = new Date("2021-01-01");
-
-    textDate.innerHTML = today;
+    textDate.innerHTML = formattedDate;
   }
   
   updateList() {

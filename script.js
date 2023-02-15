@@ -1,8 +1,17 @@
 /* eslint-disable no-unused-vars */
+/* eslint-disable class-methods-use-this */
 const SectionBook = document.getElementById('section-book');
 const bookTitle = document.getElementById('book-title');
 const bookAuthor = document.getElementById('book-author');
 const addBook = document.getElementById('add-book');
+const textDate = document.getElementById('date');
+
+const bookListSection = document.getElementById('books-list-section');
+const addBookSection = document.getElementById('add-book-section');
+const contactSection = document.getElementById('contact-section');
+const linkList = document.getElementById('link-list');
+const linkNew = document.getElementById('link-new');
+const linkContact = document.getElementById('link-contact');
 
 class Book {
   constructor(id, name, author) {
@@ -27,7 +36,18 @@ class Book {
     this.updateList();
   }
 
+  showDate() {
+    const date = new Date();
+    const options = {
+      month: 'short', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit', hour12: true,
+    };
+    const formattedDate = new Intl.DateTimeFormat('en-US', options).format(date).replace(/,/g, '');
+
+    textDate.innerHTML = formattedDate;
+  }
+
   updateList() {
+    this.showDate();
     SectionBook.innerHTML = '';
     Book.books.forEach((book) => {
       SectionBook.insertAdjacentHTML('beforeend', `
@@ -56,4 +76,26 @@ addBook.addEventListener('click', (e) => {
     Math.floor((Math.random() * Date.now())), bookTitle.value, bookAuthor.value,
   );
   newBook.addNewBook();
+});
+
+window.addEventListener('load', () => {
+  bookListSection.style.display = 'block';
+});
+
+linkList.addEventListener('click', () => {
+  bookListSection.style.display = 'block';
+  addBookSection.style.display = 'none';
+  contactSection.style.display = 'none';
+});
+
+linkNew.addEventListener('click', () => {
+  bookListSection.style.display = 'none';
+  addBookSection.style.display = 'block';
+  contactSection.style.display = 'none';
+});
+
+linkContact.addEventListener('click', () => {
+  bookListSection.style.display = 'none';
+  addBookSection.style.display = 'none';
+  contactSection.style.display = 'block';
 });

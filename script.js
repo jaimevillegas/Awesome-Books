@@ -3,6 +3,7 @@ const SectionBook = document.getElementById('section-book');
 const bookTitle = document.getElementById('book-title');
 const bookAuthor = document.getElementById('book-author');
 const addBook = document.getElementById('add-book');
+const textDate = document.getElementById('date');
 
 class Book {
   constructor(id, name, author) {
@@ -10,9 +11,10 @@ class Book {
     this.name = name;
     this.author = author;
   }
-
+  
   static books = localStorage.getItem('books') ? JSON.parse(localStorage.getItem('books')) : [];
-
+  
+  
   addNewBook() {
     Book.books.push(this);
     localStorage.setItem('books', JSON.stringify(Book.books));
@@ -20,14 +22,28 @@ class Book {
     bookAuthor.value = '';
     this.updateList();
   }
-
+  
   removeBook(id) {
     Book.books = Book.books.filter((book) => book.id !== +id);
     localStorage.setItem('books', JSON.stringify(Book.books));
     this.updateList();
   }
 
+  showDate() {
+
+    // REVIEW THIS!!!!
+
+    // var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    // var today  = new Date();
+    // textDate.innerHTML(today.toLocaleDateString("en-US", options));
+    var today = new Date().toLocaleDateString('en-us', { year:"numeric", month:"short"})
+    // let completeDate = new Date("2021-01-01");
+
+    textDate.innerHTML = today;
+  }
+  
   updateList() {
+    this.showDate();
     SectionBook.innerHTML = '';
     Book.books.forEach((book) => {
       SectionBook.insertAdjacentHTML('beforeend', `
@@ -48,6 +64,7 @@ class Book {
   }
 }
 
+
 new Book().updateList();
 
 addBook.addEventListener('click', (e) => {
@@ -57,3 +74,6 @@ addBook.addEventListener('click', (e) => {
   );
   newBook.addNewBook();
 });
+
+
+

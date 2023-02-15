@@ -13,12 +13,29 @@ body {
 
 header {
   position: sticky;
-  border: 2px solid #000;
+  border-bottom: 2px solid #000;
   margin: 0;
   padding: 0;
   top: 0;
   width: 100%;
   background-color: #e2efe4;
+}
+
+footer {
+  position: relative;
+  padding: 0;
+  bottom: 0;
+  border-top: 2px solid #000;
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  gap: 30px;
+  margin-top: 20px;
+  background-color: #e2efe4;
+}
+
+footer p {
+  margin: 20px;
 }
 
 .nav-items {
@@ -49,6 +66,11 @@ hr {
 
   /* border-color:#98473e; */
   border-color: #967d69;
+}
+
+#date {
+  margin-right: 10px;
+  align-self: end;
 }
 
 #section-book {
